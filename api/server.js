@@ -2,11 +2,13 @@
 // require your posts router and connect it here
 const express = require('express')
 const server = express()
-const Router = express.Router()
+const postsRouter = require('./posts/posts-router')
 
 
 
 server.use(express.json())
+
+server.use('/api/posts', postsRouter)
 
 server.use('*', (req, res) => {
     res.status(404).json({
